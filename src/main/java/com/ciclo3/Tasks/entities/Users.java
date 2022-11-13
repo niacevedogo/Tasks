@@ -3,11 +3,13 @@ package com.ciclo3.Tasks.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.catalina.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,7 +21,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @DateTimeFormat(pattern = "dd-MM-yyy")
@@ -34,9 +36,12 @@ public class Users {
     @JoinColumn (name = "profile")
     private Profile profile;
 
-    /*@OneToMany
-    @JoinColumn(name = "tasks")
-    private Task tasks;*/
+    @Column(name = "password", nullable = false)
+    private String password;
 
+    @OneToMany
+    @JoinColumn(name = "tasks")
+    private List<Task> tasks;
+    //  Cuando la relaciòn es UNO a MUCHOS se debe usar LIST<E>
 
 }
