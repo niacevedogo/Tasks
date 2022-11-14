@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "profile")
-public class Profile {
+public class Profile extends Users{
 
 
     @Id
@@ -23,8 +23,8 @@ public class Profile {
     private String phone;
 
     @OneToOne
-    @JoinColumn(name = "users")
-    private Users users;
+    @JoinColumn(name = "usersP")
+    private Users usersP;
 
     @DateTimeFormat(pattern = "dd-MM-yyy")
     @Column (name = "createdAt")

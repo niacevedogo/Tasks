@@ -24,6 +24,12 @@ public class Users {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "apellido")
+    private String apellido;
+
     @DateTimeFormat(pattern = "dd-MM-yyy")
     @Column (name = "createdAt")
     private Date createdAt;
@@ -32,9 +38,9 @@ public class Users {
     @Column(name = "updatedAt")
     private Date updatedAt;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn (name = "profile")
-    private Profile profile;
+    private Profile profile;*/
 
     @Column(name = "password", nullable = false)
     private String password;

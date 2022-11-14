@@ -1,6 +1,7 @@
 package com.ciclo3.Tasks.services;
 
 import com.ciclo3.Tasks.entities.Users;
+import com.ciclo3.Tasks.repository.IProfileRespository;
 import com.ciclo3.Tasks.repository.IUsersRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -57,6 +58,8 @@ public class UsersService {
             return response;
         }
         this.usersRepository.save(data);
+
+
         response.setCode(200);
         response.setMessage("Usuario registrado exitosamente");
         return  response;
