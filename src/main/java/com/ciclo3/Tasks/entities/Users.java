@@ -1,6 +1,10 @@
 package com.ciclo3.Tasks.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
@@ -30,23 +34,28 @@ public class Users {
     @Column(name = "apellido")
     private String apellido;
 
-    @DateTimeFormat(pattern = "dd-MM-yyy")
-    @Column (name = "createdAt")
-    private Date createdAt;
+    //@DateTimeFormat(pattern = "dd-MM-yyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss")
+    @Column (name = "createdAt", nullable = false, updatable = false)
+    private Date createdAt = new Date();
 
-    @DateTimeFormat(pattern = "dd-MM-yyy")
-    @Column(name = "updatedAt")
-    private Date updatedAt;
+    //@DateTimeFormat(pattern = "dd-MM-yyy")
+    //@Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss")
+    @Column(name = "updatedAt", nullable = false, updatable = false)
+    private Date updatedAt = new Date();
 
-    /*@OneToOne
-    @JoinColumn (name = "profile")
-    private Profile profile;*/
+//    @OneToOne
+//    @JoinColumn (name = "profile")
+//    private Profile profile;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "tasks")
+    @JsonIgnore
+    @OneToMany(mappedBy = ("users"), fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "tasks")
+    @JsonManagedReference
     private List<Task> tasks;
     //  Cuando la relaciòn es UNO a MUCHOS se debe usar LIST<E>
 
