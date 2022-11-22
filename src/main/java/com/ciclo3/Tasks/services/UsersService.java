@@ -136,7 +136,10 @@ public class UsersService {
         return response;
     }
 
-    public Response loginUnser (Users data){
+
+
+
+    public Response loginUser(Users data){
         Response response = new Response();
 
         //Logia de negocio
@@ -167,4 +170,8 @@ public class UsersService {
         return response;
     }
 
+    public Users selectByUserName(String username){
+        Users existe = this.usersRepository.finByUserName(username);
+        return existe;
+    }
 }

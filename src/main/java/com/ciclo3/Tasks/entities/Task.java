@@ -37,12 +37,12 @@ public class Task {
     @Column(name = "updatedAt")
     private Date updatedAt = new Date();
 
-    @Column(name = "state", nullable = false)
+    @Column(name = "state", nullable = true)
     private EnumState state;
 
     //@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "users_id", nullable = false)
+    @JoinColumn(name = "users_id", nullable = true)
     @JsonBackReference
     private Users users;
 

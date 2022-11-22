@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Setter
 @Getter
 @RestController
-@RequestMapping("task")
+@RequestMapping("task1")
 public class TaskController {
 
     private TaskService taskService;

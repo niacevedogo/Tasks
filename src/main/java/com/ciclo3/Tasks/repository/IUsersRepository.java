@@ -18,6 +18,8 @@ public interface IUsersRepository extends JpaRepository<Users, Integer> {
     @Query("SELECT u FROM Users u WHERE u.email = ?1")
     ArrayList<Users> existeCorreo(String email);
 
+    @Query("SELECT u FROM Users u WHERE u.email = ?1")
+    Users finByUserName(String email);
 
 
 
